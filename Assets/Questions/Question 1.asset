@@ -14,3 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strQuestion: How do you code a variable in a way that allows you to change it in
     unity?
+  strAnswers:
+  - '{SerializeField}'
+  - '[SerializedField]'
+  - '[SerializeField]'
+  - '{SerializedField}'
+  intCorrectAnswerIndex: 2
