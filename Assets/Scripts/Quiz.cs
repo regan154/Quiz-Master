@@ -14,13 +14,8 @@ public class Quiz : MonoBehaviour
     [SerializeField] Sprite sprCorrectAnswerSprite;
     void Start()
     {
-        questionText.text = Question.GetQuestion();
-
-        for (int i = 0; i < answerButtons.Length; i++)
-        {
-            TextMeshProUGUI buttonText = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-            buttonText.text = Question.GetAnswer(i);
-        }
+        GetNextQuestion();
+        //DisplayQuestion();
     }
 
     public void OnAnswerSelected(int index)
@@ -40,6 +35,42 @@ public class Quiz : MonoBehaviour
             questionText.text = "Sorry, the corerect answer was;\n " + correctAnswer;
             buttonImage = answerButtons[intCorrectAnswerIndex].GetComponent<Image>();
             buttonImage.sprite = sprCorrectAnswerSprite;
+        }
+        SetButtonState(false);
+    }
+
+    void GetNextQuestion()
+    {
+        SetButtonState(true);
+        SetDefaultButtonSprites();
+        DisplayQuestion();
+    }
+    void DisplayQuestion()
+    {
+        questionText.text = Question.GetQuestion();
+
+        for (int i = 0; i < answerButtons.Length; i++)
+        {
+            TextMeshProUGUI buttonText = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
+            buttonText.text = Question.GetAnswer(i);
+        }
+    }
+
+    void SetButtonState(bool state)
+    {
+        for(int i = 0; i < answerButtons.Length; i++)
+        {
+            Button button = answerButtons[i].GetComponent<Button>();
+            button.interactable = state;
+        }
+    }
+
+    void SetDefaultButtonSprites()
+    {
+        for(int i = 0; i < answerButtons.Length; i++)
+        {
+            Image buttonImage = answerButtons[i].GetComponent<Image>();
+            buttonImage.sprite = sprDefaultAnswerSprite;
         }
     }
 }
