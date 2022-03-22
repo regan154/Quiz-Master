@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     public bool blLoadNextQuestion;
     public float fltFillFraction;
 
-    bool blIsAnsweringQuestion;
+    public bool blIsAnsweringQuestion;
     float fltTimerValue;
     void Update()
     {

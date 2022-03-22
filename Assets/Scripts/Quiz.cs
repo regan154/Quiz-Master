@@ -6,19 +6,55 @@ using UnityEngine.UI;
 
 public class Quiz : MonoBehaviour
 {
+    [Header("Questions")]
     [SerializeField] TextMeshProUGUI questionText;
     [SerializeField] QuestionSO Question;
+
+    [Header("Answers")]
     [SerializeField] GameObject[] answerButtons;
     int intCorrectAnswerIndex;
+    bool blHasAnsweredEarly;
+
+    [Header("Button Colors")]
     [SerializeField] Sprite sprDefaultAnswerSprite;
     [SerializeField] Sprite sprCorrectAnswerSprite;
+
+    [Header("Timer")]
+    [SerializeField] Image timerImage;
+    Timer timer;
     void Start()
     {
+        timer = FindObjectOfType<Timer>();
         GetNextQuestion();
         //DisplayQuestion();
     }
 
+    void Update()
+    {
+        timerImage.fillAmount = timer.fltFillFraction;
+        if (timer.blLoadNextQuestion)
+        {
+            blHasAnsweredEarly = false;
+            GetNextQuestion();
+            timer.blLoadNextQuestion = false;
+        }
+        else if (!blHasAnsweredEarly && !timer.blIsAnsweringQuestion)
+        {
+            DisplayAnswer(-1);
+            SetButtonState(false);
+            
+        }
+    }
+
     public void OnAnswerSelected(int index)
+    {
+        blHasAnsweredEarly = true;
+        DisplayAnswer(index);
+        SetButtonState(false);
+        timer.CancelTimer();
+    }
+
+    void DisplayAnswer(int index)
     {
         Image buttonImage;
 
@@ -36,9 +72,7 @@ public class Quiz : MonoBehaviour
             buttonImage = answerButtons[intCorrectAnswerIndex].GetComponent<Image>();
             buttonImage.sprite = sprCorrectAnswerSprite;
         }
-        SetButtonState(false);
     }
-
     void GetNextQuestion()
     {
         SetButtonState(true);
