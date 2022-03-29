@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Question 2
   m_EditorClassIdentifier: 
   strQuestion: Whats the shortcut to rename in unity?
+  strAnswers:
+  - Function + F2
+  - Ctrl + F1
+  - Alt + F4
+  - Shift + Enter
+  intCorrectAnswerIndex: 0

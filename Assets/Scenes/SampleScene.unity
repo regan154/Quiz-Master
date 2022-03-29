@@ -307,7 +307,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionText: {fileID: 1089220366}
-  Question: {fileID: 11400000, guid: 1616b0e6dd58976458ac703e04529976, type: 2}
+  questions:
+  - {fileID: 11400000, guid: 1616b0e6dd58976458ac703e04529976, type: 2}
+  - {fileID: 11400000, guid: 41b47f345fc2698408a28f331aa7957a, type: 2}
+  - {fileID: 11400000, guid: 08d0f31cebff55f4cb92925228f708ba, type: 2}
+  - {fileID: 11400000, guid: a14e5a2ff55554e43ac654937fd9f01c, type: 2}
   answerButtons:
   - {fileID: 120640987}
   - {fileID: 1871592798}
@@ -315,6 +319,7 @@ MonoBehaviour:
   - {fileID: 148078681}
   sprDefaultAnswerSprite: {fileID: 21300000, guid: bda74b269b58812479f4c9aaf38468fe, type: 3}
   sprCorrectAnswerSprite: {fileID: 21300000, guid: e1dd8d5ad2ce1f8498ebd5f20a90496b, type: 3}
+  timerImage: {fileID: 1636114472}
 --- !u!1 &115601888
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +353,7 @@ MonoBehaviour:
   fltTimeToShowCorrectAnswer: 10
   blLoadNextQuestion: 0
   fltFillFraction: 0
+  blIsAnsweringQuestion: 0
 --- !u!4 &115601890
 Transform:
   m_ObjectHideFlags: 0

@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Question 4
   m_EditorClassIdentifier: 
   strQuestion: Why are empty objects useful in unity?
+  strAnswers:
+  - They arent
+  - Used to store C# Scripts
+  - They just do
+  - Acts like a folder to clean up the Hierarchy
+  intCorrectAnswerIndex: 3
